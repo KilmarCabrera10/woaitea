@@ -1,1 +1,910 @@
+/* Global CSS for Bubble Tea Family Theme */
 @import "tailwindcss";
+
+/* Importar Google Fonts - DEBE IR AQUÍ AL PRINCIPIO */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Inter+Tight:wght@500;600&family=Comfortaa:wght@300;400;500;600;700&display=swap');
+
+/* Crear variante personalizada para dark mode en Tailwind CSS 4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Variables CSS personalizadas - Paleta Bubble Tea Familiar */
+@layer base {
+  :root {
+    /* 🧋 Nueva Paleta Bubble Tea - Colores vibrantes y modernos */
+    
+    /* Tonos Taro (púrpura cremoso) */
+    --color-taro-25: #FDFBFF;      /* Taro ultra claro */
+    --color-taro-50: #F8F4FF;      /* Púrpura muy suave */
+    --color-taro-100: #F0E7FF;     /* Taro claro */
+    --color-taro-200: #E5D1FF;     /* Púrpura suave */
+    --color-taro-300: #D4B4FF;     /* Taro medio */
+    --color-taro-400: #C197FF;     /* Púrpura vibrante */
+    --color-taro-500: #A855F7;     /* Taro principal */
+    --color-taro-600: #9333EA;     /* Púrpura intenso */
+    
+    /* Tonos Mango (naranja dorado) */
+    --color-mango-50: #FFF8ED;     /* Mango muy claro */
+    --color-mango-100: #FFEED3;    /* Cremoso mango */
+    --color-mango-200: #FEDD9B;    /* Mango suave */
+    --color-mango-300: #FDC464;    /* Dorado vibrante */
+    --color-mango-400: #FBAA2D;    /* Mango principal */
+    --color-mango-500: #F59E0B;    /* Naranja intenso */
+    --color-mango-600: #D97706;    /* Mango oscuro */
+    
+    /* Tonos Matcha (verde vibrante) */
+    --color-matcha-50: #F0FDF4;    /* Verde muy claro */
+    --color-matcha-100: #DCFCE7;   /* Matcha suave */
+    --color-matcha-200: #BBF7D0;   /* Verde claro */
+    --color-matcha-300: #86EFAC;   /* Matcha vibrante */
+    --color-matcha-400: #4ADE80;   /* Verde medio */
+    --color-matcha-500: #22C55E;   /* Matcha principal */
+    --color-matcha-600: #16A34A;   /* Verde intenso */
+    
+    /* Tonos Fresa (rosa coral) */
+    --color-fresa-50: #FFF1F2;     /* Rosa muy claro */
+    --color-fresa-100: #FFE4E6;    /* Fresa suave */
+    --color-fresa-200: #FECDD3;    /* Rosa claro */
+    --color-fresa-300: #FDA4AF;    /* Coral vibrante */
+    --color-fresa-400: #FB7185;    /* Rosa medio */
+    --color-fresa-500: #F43F5E;    /* Fresa principal */
+    --color-fresa-600: #E11D48;    /* Rosa intenso */
+    
+    /* Tonos Brown Sugar (café dorado) */
+    --color-brown-50: #FAFAF9;     /* Muy claro */
+    --color-brown-100: #F5F5F4;    /* Sugar claro */
+    --color-brown-200: #E7E5E4;    /* Beige */
+    --color-brown-300: #D6D3D1;    /* Café claro */
+    --color-brown-400: #A8A29E;    /* Brown sugar */
+    --color-brown-500: #78716C;    /* Café medio */
+    --color-brown-600: #57534E;    /* Café oscuro */
+    
+    /* 🎨 Sistema de colores primarios renovado */
+    --color-primary-50: var(--color-taro-50);
+    --color-primary-100: var(--color-taro-100);
+    --color-primary-200: var(--color-taro-200);
+    --color-primary-300: var(--color-taro-300);
+    --color-primary-400: var(--color-taro-400);
+    --color-primary-500: var(--color-taro-500);
+    --color-primary-600: var(--color-taro-600);
+    --color-primary-700: var(--color-brown-500);
+    --color-primary-800: var(--color-brown-600);
+    --color-primary-900: #1F2937;
+    
+    /* 🌿 Colores secundarios */
+    --color-secondary-50: var(--color-matcha-50);
+    --color-secondary-100: var(--color-matcha-100);
+    --color-secondary-200: var(--color-matcha-200);
+    --color-secondary-300: var(--color-matcha-300);
+    --color-secondary-400: var(--color-matcha-400);
+    --color-secondary-500: var(--color-matcha-500);
+    --color-secondary-600: var(--color-matcha-600);
+    
+    /* 🏠 Colores de fondo renovados */
+    --bg-primary: var(--color-taro-25);
+    --bg-secondary: var(--color-taro-50);
+    --bg-tertiary: var(--color-taro-100);
+    --bg-accent: var(--color-mango-50);
+    --bg-warm: var(--color-fresa-50);
+    --bg-fresh: var(--color-matcha-50);
+    
+    /* 📝 Colores de texto actualizados */
+    --text-primary: #1F2937;
+    --text-secondary: var(--color-brown-600);
+    --text-tertiary: var(--color-brown-500);
+    --text-accent: var(--color-taro-600);
+    --text-muted: var(--color-brown-400);
+    --text-warm: var(--color-mango-600);
+    
+    /* ✨ Sombras con nueva paleta */
+    --shadow-soft: 0 4px 6px -1px rgba(168, 85, 247, 0.08), 0 2px 4px -1px rgba(168, 85, 247, 0.04);
+    --shadow-medium: 0 10px 15px -3px rgba(168, 85, 247, 0.12), 0 4px 6px -2px rgba(168, 85, 247, 0.06);
+    --shadow-strong: 0 20px 25px -5px rgba(168, 85, 247, 0.15), 0 10px 10px -5px rgba(168, 85, 247, 0.08);
+    --shadow-bubble: 0 8px 32px rgba(212, 180, 255, 0.3);
+    --shadow-warm: 0 6px 20px rgba(251, 170, 45, 0.2);
+    --shadow-fresh: 0 6px 20px rgba(134, 239, 172, 0.25);
+  }
+  
+  /* 🌙 Modo oscuro actualizado */
+  .dark {
+    --color-primary-50: #1F2937;
+    --color-primary-100: var(--color-brown-600);
+    --color-primary-200: var(--color-brown-500);
+    --color-primary-300: var(--color-taro-600);
+    --color-primary-400: var(--color-taro-500);
+    --color-primary-500: var(--color-taro-400);
+    --color-primary-600: var(--color-taro-300);
+    --color-primary-700: var(--color-taro-200);
+    --color-primary-800: var(--color-taro-100);
+    --color-primary-900: var(--color-taro-50);
+    
+    --bg-primary: #0F0B14;
+    --bg-secondary: #1A1625;
+    --bg-tertiary: #2D1B3D;
+    --bg-accent: #3D2817;
+    --bg-warm: #3D1A1F;
+    
+    --text-primary: var(--color-taro-50);
+    --text-secondary: var(--color-taro-200);
+    --text-tertiary: var(--color-taro-300);
+    --text-accent: var(--color-taro-400);
+    --text-muted: var(--color-brown-300);
+  }
+  
+  /* 🎯 Reset y configuración base */
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+  
+  body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    transition: background-color var(--transition-normal), color var(--transition-normal);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* 🎨 Tipografías personalizadas */
+  .font-primary {
+    font-family: var(--font-primary);
+  }
+  
+  .font-accent {
+    font-family: var(--font-accent);
+  }
+  
+  .font-cozy {
+    font-family: var(--font-cozy);
+  }
+  
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  
+  /* 📰 Headings con calidez familiar */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-cozy);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: var(--text-warm);
+  }
+  
+  h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+  
+  /* 🔗 Enlaces con calidez */
+  a {
+    color: var(--text-accent);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  
+  a:hover {
+    color: var(--color-primary-600);
+  }
+  
+  /* ✨ Selección de texto personalizada */
+  ::selection {
+    background-color: var(--color-peach-200);
+    color: var(--color-wood-600);
+  }
+  
+  ::-moz-selection {
+    background-color: var(--color-peach-200);
+    color: var(--color-wood-600);
+  }
+  
+  /* 📜 Scrollbar personalizada */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-peach-300);
+    border-radius: 4px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-peach-400);
+  }
+}
+
+/* 🛠️ Clases utilitarias reutilizables */
+@layer utilities {
+  /* 📦 Contenedores */
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-narrow {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-wide {
+    @apply max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .container-cozy {
+    @apply max-w-5xl mx-auto px-6 sm:px-8 lg:px-10;
+  }
+  
+  /* 📏 Espaciados de sección */
+  .section-padding {
+    padding-top: var(--spacing-section);
+    padding-bottom: var(--spacing-section);
+  }
+  
+  .section-padding-sm {
+    padding-top: calc(var(--spacing-section) * 0.75);
+    padding-bottom: calc(var(--spacing-section) * 0.75);
+  }
+  
+  .section-padding-lg {
+    padding-top: calc(var(--spacing-section) * 1.5);
+    padding-bottom: calc(var(--spacing-section) * 1.5);
+  }
+  
+  .section-cozy {
+    padding-top: var(--spacing-cozy);
+    padding-bottom: var(--spacing-cozy);
+  }
+  
+  /* 🎬 Animaciones */
+  .animate-fade-in {
+    animation: fadeIn 0.6s ease-out;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.6s ease-out;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.4s ease-out;
+  }
+  
+  .animate-bounce-gentle {
+    animation: bounceGentle 2s ease-in-out infinite;
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-soft {
+    animation: pulseSoft 2s ease-in-out infinite;
+  }
+  
+  .animate-bubble-rise {
+    animation: bubbleRise 4s ease-in-out infinite;
+  }
+  
+  .animate-tea-swirl {
+    animation: teaSwirl 20s linear infinite;
+  }
+  
+  /* 🌈 Gradientes actualizados */
+  .gradient-primary {
+    background: linear-gradient(135deg, var(--color-taro-50) 0%, var(--color-mango-50) 100%);
+  }
+  
+  .gradient-secondary {
+    background: linear-gradient(135deg, var(--color-matcha-50) 0%, var(--color-taro-50) 100%);
+  }
+  
+  .gradient-accent {
+    background: linear-gradient(135deg, var(--color-taro-400) 0%, var(--color-taro-500) 100%);
+  }
+  
+  .gradient-warm {
+    background: linear-gradient(135deg, var(--color-mango-100) 0%, var(--color-fresa-100) 50%, var(--color-taro-100) 100%);
+  }
+  
+  .gradient-bubble {
+    background: radial-gradient(circle at 30% 30%, var(--color-taro-200) 0%, var(--color-mango-100) 50%, transparent 70%);
+  }
+  
+  .gradient-matcha {
+    background: linear-gradient(135deg, var(--color-matcha-200) 0%, var(--color-matcha-300) 100%);
+  }
+  
+  .gradient-cozy {
+    background: linear-gradient(135deg, var(--color-taro-100) 0%, var(--color-mango-100) 50%, var(--color-fresa-100) 100%);
+  }
+  
+  .gradient-family {
+    background: radial-gradient(ellipse at center, var(--color-taro-50) 0%, var(--color-taro-25) 70%);
+  }
+  
+  /* 🔘 Botones personalizados con tema bubble tea */
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4;
+    background: var(--gradient-accent);
+    color: white;
+    box-shadow: var(--shadow-soft);
+    font-family: var(--font-cozy);
+    border-radius: var(--radius-cozy);
+  }
+  
+  .btn-primary:hover {
+    box-shadow: var(--shadow-medium);
+    filter: brightness(1.05);
+  }
+  
+  .btn-primary:focus {
+    @apply ring-orange-200/50;
+  }
+  
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl border-2 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4;
+    border-color: var(--color-peach-300);
+    color: var(--text-accent);
+    background-color: transparent;
+    font-family: var(--font-cozy);
+    border-radius: var(--radius-cozy);
+  }
+  
+  .btn-secondary:hover {
+    background-color: var(--color-peach-50);
+    border-color: var(--color-peach-400);
+  }
+  
+  .btn-secondary:focus {
+    @apply ring-orange-200/50;
+  }
+  
+  .btn-matcha {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-4;
+    background: var(--gradient-matcha);
+    color: var(--color-wood-600);
+    box-shadow: var(--shadow-fresh);
+    font-family: var(--font-cozy);
+    border-radius: var(--radius-cozy);
+  }
+  
+  .btn-matcha:hover {
+    box-shadow: var(--shadow-medium);
+    filter: brightness(1.05);
+  }
+  
+  .btn-matcha:focus {
+    @apply ring-green-200/50;
+  }
+  
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-6 py-3 font-semibold rounded-xl transition-all duration-300 focus:outline-none focus:ring-4;
+    color: var(--text-accent);
+    border-radius: var(--radius-cozy);
+    font-family: var(--font-cozy);
+  }
+  
+  .btn-ghost:hover {
+    background-color: var(--color-peach-50);
+  }
+  
+  .btn-ghost:focus {
+    @apply ring-orange-200/50;
+  }
+  
+  /* 🃏 Cards y superficies */
+  .card {
+    @apply rounded-2xl border transition-all duration-300;
+    background-color: var(--bg-primary);
+    border-color: var(--color-cream-300);
+    box-shadow: var(--shadow-soft);
+    border-radius: var(--radius-xl);
+  }
+  
+  .card:hover {
+    box-shadow: var(--shadow-medium);
+    transform: translateY(-4px);
+    border-color: var(--color-peach-200);
+  }
+  
+  .card-bubble {
+    @apply rounded-3xl border-2 transition-all duration-300;
+    background: var(--gradient-bubble);
+    border-color: var(--color-peach-200);
+    box-shadow: var(--shadow-bubble);
+    border-radius: var(--radius-bubble);
+  }
+  
+  .card-cozy {
+    @apply rounded-2xl border transition-all duration-300;
+    background: var(--gradient-family);
+    border-color: var(--color-cream-200);
+    box-shadow: var(--shadow-warm);
+    border-radius: var(--radius-cozy);
+  }
+  
+  .card-matcha {
+    @apply rounded-2xl border transition-all duration-300;
+    background: var(--gradient-secondary);
+    border-color: var(--color-matcha-200);
+    box-shadow: var(--shadow-fresh);
+    border-radius: var(--radius-cozy);
+  }
+  
+  /* ✨ Efectos de texto actualizados */
+  .text-gradient {
+    background: linear-gradient(135deg, var(--color-taro-500) 0%, var(--color-mango-500) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-matcha {
+    background: linear-gradient(135deg, var(--color-matcha-500) 0%, var(--color-matcha-600) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(196, 122, 92, 0.1);
+  }
+  
+  .text-warm {
+    color: var(--text-warm);
+  }
+  
+  .text-cozy {
+    color: var(--color-taro-500);
+    font-family: var(--font-cozy);
+  }
+  
+  /* 🫧 Elementos decorativos de burbujas */
+  .bubble-decoration {
+    position: relative;
+  }
+  
+  .bubble-decoration::before {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--color-taro-200);
+    border-radius: 50%;
+    opacity: 0.4;
+    animation: float 3s ease-in-out infinite;
+    top: -10px;
+    right: -10px;
+  }
+  
+  .bubble-decoration::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--color-matcha-300);
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: float 3s ease-in-out infinite reverse;
+    bottom: -6px;
+    left: -6px;
+  }
+  
+  .tapioca-decoration {
+    position: relative;
+  }
+  
+  .tapioca-decoration::before {
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: var(--color-tapioca-500);
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: bubbleRise 4s ease-in-out infinite;
+    bottom: 0;
+    left: 20%;
+  }
+  
+  .tapioca-decoration::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--color-tapioca-600);
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: bubbleRise 4s ease-in-out infinite 1s;
+    bottom: 0;
+    right: 30%;
+  }
+  
+  /* 📐 Utilidades de espaciado */
+  .space-y-section > * + * {
+    margin-top: var(--spacing-section);
+  }
+  
+  .space-y-component > * + * {
+    margin-top: var(--spacing-component);
+  }
+  
+  .space-y-cozy > * + * {
+    margin-top: var(--spacing-cozy);
+  }
+  
+  /* 📱 Responsive utilities */
+  .hide-mobile {
+    @apply hidden sm:block;
+  }
+  
+  .show-mobile {
+    @apply block sm:hidden;
+  }
+  
+  /* 🎯 Focus states mejorados */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-4;
+  }
+  
+  .focus-ring-warm {
+    @apply focus:outline-none focus:ring-4 focus:ring-orange-200/50;
+  }
+  
+  .focus-ring-fresh {
+    @apply focus:outline-none focus:ring-4 focus:ring-green-200/50;
+  }
+  
+  /* ⏳ Estados de loading */
+  .loading-shimmer {
+    background: linear-gradient(90deg, var(--color-cream-100) 25%, var(--color-peach-50) 50%, var(--color-cream-100) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  .loading-bubble {
+    background: linear-gradient(90deg, var(--color-peach-100) 25%, var(--color-matcha-100) 50%, var(--color-peach-100) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+  
+  /* 🎨 Utilidades de color actualizadas */
+  .bg-bubble-tea {
+    background: var(--gradient-warm);
+  }
+  
+  .bg-family-warm {
+    background: var(--gradient-family);
+  }
+  
+  .bg-matcha-fresh {
+    background: var(--gradient-secondary);
+  }
+  
+  .border-bubble {
+    border-color: var(--color-taro-200);
+  }
+  
+  .border-matcha {
+    border-color: var(--color-matcha-200);
+  }
+  
+  .border-cozy {
+    border-color: var(--color-taro-300);
+  }
+}
+
+/* 🎭 Keyframes para animaciones */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceGentle {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-20px) rotate(5deg);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* 🧋 Animaciones específicas para elementos de bubble tea */
+@keyframes bubbleRise {
+  0% {
+    transform: translateY(100px) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px) scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes teaSwirl {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes bubblePop {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes familyGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(244, 212, 167, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(244, 212, 167, 0.5);
+  }
+}
+
+.bubble-rise {
+  animation: bubbleRise 4s ease-in-out infinite;
+}
+
+.tea-swirl {
+  animation: teaSwirl 20s linear infinite;
+}
+
+.bubble-pop {
+  animation: bubblePop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.family-glow {
+  animation: familyGlow 3s ease-in-out infinite;
+}
+
+/* 📱 Responsive design mejorado */
+@media (max-width: 640px) {
+  :root {
+    --spacing-section: 3rem;
+    --spacing-component: 2rem;
+    --spacing-cozy: 1.5rem;
+  }
+  
+  .container-custom, .container-cozy {
+    @apply px-4;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-matcha, .btn-ghost {
+    @apply px-4 py-2 text-sm;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --spacing-section: 2rem;
+    --spacing-component: 1.5rem;
+    --spacing-cozy: 1rem;
+  }
+  
+  .card, .card-bubble, .card-cozy, .card-matcha {
+    @apply rounded-xl;
+    border-radius: var(--radius-large);
+  }
+}
+
+/* ♿ Mejoras de accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .bubble-decoration::before,
+  .bubble-decoration::after,
+  .tapioca-decoration::before,
+  .tapioca-decoration::after {
+    animation: none !important;
+  }
+}
+
+/* 🔍 Modo de alto contraste */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary-500: #C17A5C;
+    --color-primary-600: #A86548;
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --bg-primary: #FFFFFF;
+  }
+  
+  .dark {
+    --text-primary: #FFFFFF;
+    --text-secondary: #CCCCCC;
+    --bg-primary: #000000;
+  }
+  
+  .card, .card-bubble, .card-cozy, .card-matcha {
+    border-width: 2px;
+  }
+}
+
+/* 🖨️ Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+    font-family: serif;
+  }
+  
+  .card, .card-bubble, .card-cozy, .card-matcha {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    background: white !important;
+  }
+  
+  .btn-primary, .btn-secondary, .btn-matcha, .btn-ghost {
+    background: white !important;
+    color: black !important;
+    border: 1px solid black !important;
+  }
+}
+
+/* 🌟 Clases especiales para experiencia familiar */
+.family-moment {
+  background: var(--gradient-family);
+  border-radius: var(--radius-bubble);
+  padding: var(--spacing-cozy);
+  box-shadow: var(--shadow-warm);
+  position: relative;
+  overflow: hidden;
+}
+
+.family-moment::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, var(--color-peach-100) 0%, transparent 70%);
+  opacity: 0.3;
+  animation: teaSwirl 30s linear infinite;
+  pointer-events: none;
+}
+
+.bubble-tea-vibes {
+  background: var(--gradient-bubble);
+  border-radius: var(--radius-bubble);
+  position: relative;
+  overflow: hidden;
+}
+
+.bubble-tea-vibes::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(to top, var(--color-tapioca-200), transparent);
+  opacity: 0.6;
+}
+
+/* 🎉 Efectos especiales para momentos especiales */
+.celebration {
+  animation: familyGlow 2s ease-in-out infinite, bubblePop 0.6s ease-out;
+}
+
+.cozy-corner {
+  background: var(--gradient-cozy);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-component);
+  position: relative;
+}
+
+.cozy-corner::before {
+  content: '🧋';
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  opacity: 0.7;
+  animation: float 4s ease-in-out infinite;
+}
+

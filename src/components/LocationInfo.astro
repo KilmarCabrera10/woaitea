@@ -1,0 +1,377 @@
+---
+// LocationInfo Component - Wo Ai Tea
+// Información completa de ubicación, horarios y contacto
+export interface Props {
+  titulo?: string;
+  subtitulo?: string;
+}
+
+const {
+  titulo = "Visítanos",
+  subtitulo = "Te esperamos en nuestro acogedor espacio en Las Cascadas"
+} = Astro.props;
+
+// Información de ubicación
+const ubicacion = {
+  nombre: "Wo Ai Tea Las Cascadas",
+  direccion: "Plaza Soho Las Cascadas, Local 15",
+  ciudad: "Antiguo Cuscatlán, El Salvador",
+  coordenadas: {
+    lat: "13.6929",
+    lng: "-89.2182"
+  },
+  telefono: "+503-1234-5678",
+  email: "hola@woaitea.com",
+  whatsapp: "50312345678"
+};
+
+// Horarios de atención
+const horarios = [
+  { dia: "Lunes", horario: "10:00 AM - 9:00 PM", abierto: true },
+  { dia: "Martes", horario: "10:00 AM - 9:00 PM", abierto: true },
+  { dia: "Miércoles", horario: "10:00 AM - 9:00 PM", abierto: true },
+  { dia: "Jueves", horario: "10:00 AM - 9:00 PM", abierto: true },
+  { dia: "Viernes", horario: "10:00 AM - 10:00 PM", abierto: true },
+  { dia: "Sábado", horario: "10:00 AM - 10:00 PM", abierto: true },
+  { dia: "Domingo", horario: "11:00 AM - 8:00 PM", abierto: true }
+];
+
+// Servicios disponibles
+const servicios = [
+  {
+    icono: "🏪",
+    titulo: "Dine-in",
+    descripcion: "Disfruta en nuestro acogedor espacio",
+    disponible: true
+  },
+  {
+    icono: "🥤",
+    titulo: "Take Away",
+    descripcion: "Lleva tu bebida favorita contigo",
+    disponible: true
+  },
+  {
+    icono: "🚗",
+    titulo: "Delivery",
+    descripcion: "Entrega a domicilio vía PedidosYA",
+    disponible: true
+  },
+  {
+    icono: "📱",
+    titulo: "Pedidos Online",
+    descripcion: "Ordena por WhatsApp o nuestra web",
+    disponible: true
+  }
+];
+
+// Información de transporte
+const transporte = [
+  {
+    tipo: "Auto",
+    icono: "🚗",
+    descripcion: "Estacionamiento gratuito disponible en Plaza Soho"
+  },
+  {
+    tipo: "Bus",
+    icono: "🚌",
+    descripcion: "Rutas 101, 102, 108 - Parada Las Cascadas"
+  },
+  {
+    tipo: "Uber/Taxi",
+    icono: "🚕",
+    descripcion: "Solicita viaje a 'Plaza Soho Las Cascadas'"
+  },
+  {
+    tipo: "A pie",
+    icono: "🚶",
+    descripcion: "Fácil acceso peatonal desde centros comerciales cercanos"
+  }
+];
+---
+
+<section id="ubicacion" class="py-20 bg-white dark:bg-gray-900 relative overflow-hidden">
+  
+  <!-- Elementos Decorativos de Fondo -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <!-- Patrones geométricos -->
+    <div class="absolute top-20 left-10 w-32 h-32 border-2 border-taro-100/30 dark:border-taro-800/30 rounded-full"></div>
+    <div class="absolute bottom-20 right-20 w-24 h-24 border-2 border-mango-200/20 dark:border-mango-700/20 rounded-full"></div>
+    <div class="absolute top-1/2 right-1/4 w-16 h-16 bg-matcha-100/20 dark:bg-matcha-800/20 rounded-full"></div>
+    
+    <!-- Elementos temáticos -->
+    <div class="absolute top-32 right-16 text-6xl text-taro-100/15 dark:text-taro-800/15 transform rotate-12">🗺️</div>
+    <div class="absolute bottom-32 left-16 text-5xl text-mango-200/10 dark:text-mango-800/10 transform -rotate-45">📍</div>
+  </div>
+
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Encabezado -->
+    <div class="text-center max-w-4xl mx-auto mb-16">
+      <div class="inline-flex items-center gap-2 px-4 py-2 bg-taro-100 dark:bg-taro-900/30 text-taro-700 dark:text-taro-300 rounded-full text-sm font-medium mb-6">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+        </svg>
+        Nuestra ubicación
+      </div>
+      
+      <h2 class="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white mb-6">
+        <span class="bg-gradient-to-r from-taro-600 to-mango-500 bg-clip-text text-transparent">
+          {titulo}
+        </span>
+      </h2>
+      <p class="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
+        {subtitulo}
+      </p>
+    </div>
+    
+    <!-- Grid Principal -->
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      
+      <!-- Información de Contacto y Horarios -->
+      <div class="space-y-8">
+        
+        <!-- Información de Contacto -->
+        <div class="group relative bg-gradient-to-br from-taro-50 to-mango-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-taro-200 dark:border-gray-600">
+          <div class="absolute top-4 right-4 text-3xl opacity-20 group-hover:opacity-40 transition-opacity">
+            📞
+          </div>
+          
+          <div class="w-16 h-16 bg-gradient-to-br from-taro-500 to-taro-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            Información de Contacto
+          </h3>
+          
+          <div class="space-y-4">
+            <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-taro-25 dark:hover:bg-gray-600/30 transition-colors">
+              <div class="w-8 h-8 bg-taro-100 dark:bg-taro-800/50 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-taro-600 dark:text-taro-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">{ubicacion.direccion}</p>
+                <p class="text-gray-600 dark:text-gray-300 text-sm">{ubicacion.ciudad}</p>
+              </div>
+            </div>
+            
+            <div class="flex items-center gap-4 p-3 rounded-xl hover:bg-mango-25 dark:hover:bg-gray-600/30 transition-colors">
+              <div class="w-8 h-8 bg-mango-100 dark:bg-mango-800/50 rounded-full flex items-center justify-center">
+                <svg class="w-4 h-4 text-mango-600 dark:text-mango-300" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-medium text-gray-900 dark:text-white">{ubicacion.telefono}</p>
+                <a 
+                  href={`https://wa.me/${ubicacion.whatsapp}?text=¡Hola! Me gustaría información sobre Wo Ai Tea 🧋`}
+                  target="_blank"
+                  rel="noopener"
+                  class="text-matcha-600 dark:text-matcha-400 hover:text-matcha-700 dark:hover:text-matcha-300 font-medium transition-colors"
+                >
+                  Chatear ahora
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="px-3 py-1 bg-taro-200 dark:bg-taro-800/50 text-taro-800 dark:text-taro-200 rounded-full text-sm font-medium">Plaza Soho</span>
+            <span class="px-3 py-1 bg-mango-200 dark:bg-mango-800/50 text-mango-800 dark:text-mango-200 rounded-full text-sm font-medium">Fácil acceso</span>
+          </div>
+        </div>
+        
+        <!-- Horarios de Atención -->
+        <div class="group relative bg-gradient-to-br from-mango-50 to-fresa-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-mango-200 dark:border-gray-600">
+          <div class="absolute top-4 right-4 text-3xl opacity-20 group-hover:opacity-40 transition-opacity">
+            🕒
+          </div>
+          
+          <div class="w-16 h-16 bg-gradient-to-br from-mango-500 to-mango-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            Horarios de Atención
+          </h3>
+          
+          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+            Estamos aquí para servirte todos los días
+          </p>
+          
+          <div class="space-y-3">
+            {horarios.map(horario => (
+              <div class="flex justify-between items-center p-3 rounded-xl hover:bg-mango-25 dark:hover:bg-gray-600/30 transition-colors">
+                <span class="font-medium text-gray-900 dark:text-white">{horario.dia}</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-gray-700 dark:text-gray-300">{horario.horario}</span>
+                  {horario.abierto && (
+                    <span class="w-2 h-2 bg-matcha-500 rounded-full"></span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <!-- Estado actual -->
+          <div class="mt-6 p-4 bg-matcha-50 dark:bg-matcha-900/30 border border-matcha-200 dark:border-matcha-700 rounded-xl">
+            <div class="flex items-center gap-2">
+              <div class="w-3 h-3 bg-matcha-500 rounded-full animate-pulse"></div>
+              <span class="text-matcha-700 dark:text-matcha-300 font-semibold">Abierto ahora</span>
+              <span class="text-matcha-600 dark:text-matcha-400">• Cierra a las 9:00 PM</span>
+            </div>
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="px-3 py-1 bg-mango-200 dark:bg-mango-800/50 text-mango-800 dark:text-mango-200 rounded-full text-sm font-medium">Todos los días</span>
+            <span class="px-3 py-1 bg-fresa-200 dark:bg-fresa-800/50 text-fresa-800 dark:text-fresa-200 rounded-full text-sm font-medium">Horarios extendidos</span>
+          </div>
+        </div>
+        
+        <!-- Servicios Disponibles -->
+        <div class="group relative bg-gradient-to-br from-matcha-50 to-brown-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-matcha-200 dark:border-gray-600">
+          <div class="absolute top-4 right-4 text-3xl opacity-20 group-hover:opacity-40 transition-opacity">
+            🛎️
+          </div>
+          
+          <div class="w-16 h-16 bg-gradient-to-br from-matcha-500 to-matcha-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            Servicios Disponibles
+          </h3>
+          
+          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+            Múltiples formas de disfrutar tu experiencia
+          </p>
+          
+          <div class="grid sm:grid-cols-2 gap-4">
+            {servicios.map(servicio => (
+              <div class="flex items-center gap-3 p-3 border border-matcha-100 dark:border-gray-600 rounded-xl hover:bg-matcha-25 dark:hover:bg-gray-600/30 transition-colors">
+                <div class="w-8 h-8 bg-matcha-100 dark:bg-matcha-800/50 rounded-full flex items-center justify-center text-lg">
+                  {servicio.icono}
+                </div>
+                <div>
+                  <p class="font-medium text-gray-900 dark:text-white">{servicio.titulo}</p>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm">{servicio.descripcion}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="px-3 py-1 bg-matcha-200 dark:bg-matcha-800/50 text-matcha-800 dark:text-matcha-200 rounded-full text-sm font-medium">Dine-in</span>
+            <span class="px-3 py-1 bg-brown-200 dark:bg-brown-800/50 text-brown-800 dark:text-brown-200 rounded-full text-sm font-medium">Delivery</span>
+          </div>
+        </div>
+        
+        <!-- Información de Transporte -->
+        <div class="group relative bg-gradient-to-br from-fresa-50 to-taro-100 dark:from-gray-800 dark:to-gray-700 rounded-2xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-fresa-200 dark:border-gray-600">
+          <div class="absolute top-4 right-4 text-3xl opacity-20 group-hover:opacity-40 transition-opacity">
+            🚗
+          </div>
+          
+          <div class="w-16 h-16 bg-gradient-to-br from-fresa-500 to-fresa-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+          </div>
+          
+          <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">
+            Cómo Llegar
+          </h3>
+          
+          <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+            Opciones de transporte para llegar fácilmente
+          </p>
+          
+          <div class="space-y-4">
+            {transporte.map(opcion => (
+              <div class="flex items-start gap-4 p-4 border border-fresa-100 dark:border-gray-600 rounded-xl hover:bg-fresa-25 dark:hover:bg-gray-600/30 transition-colors">
+                <div class="w-8 h-8 bg-fresa-100 dark:bg-fresa-800/50 rounded-full flex items-center justify-center text-lg flex-shrink-0">
+                  {opcion.icono}
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-white">{opcion.tipo}</h4>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm">{opcion.descripcion}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <div class="flex flex-wrap gap-2 mt-6">
+            <span class="px-3 py-1 bg-fresa-200 dark:bg-fresa-800/50 text-fresa-800 dark:text-fresa-200 rounded-full text-sm font-medium">Estacionamiento</span>
+            <span class="px-3 py-1 bg-taro-200 dark:bg-taro-800/50 text-taro-800 dark:text-taro-200 rounded-full text-sm font-medium">Transporte público</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Mapa y Vista -->
+      <div class="space-y-8">
+        <!-- Imagen del lugar -->
+        <div class="relative overflow-hidden rounded-2xl border border-taro-200 dark:border-gray-600 shadow-xl hover:shadow-2xl transition-all duration-300">
+          <div class="aspect-[4/3] bg-gradient-to-br from-taro-100 to-mango-200 dark:from-gray-700 dark:to-gray-600 flex items-center justify-center relative">
+            <!-- Placeholder imagen -->
+            <div class="text-center">
+              <div class="text-6xl mb-4">🏪</div>
+              <h4 class="text-2xl font-bold text-gray-800 dark:text-white mb-2">Wo Ai Tea</h4>
+              <p class="text-gray-600 dark:text-gray-300">Plaza Soho Las Cascadas</p>
+            </div>
+            
+            <!-- Overlay de información -->
+            <div class="absolute bottom-4 left-4 right-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-taro-100 dark:border-gray-600">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-taro-500 rounded-full flex items-center justify-center text-white">
+                  📍
+                </div>
+                <div>
+                  <h4 class="font-semibold text-gray-900 dark:text-white">{ubicacion.nombre}</h4>
+                  <p class="text-gray-600 dark:text-gray-300 text-sm">{ubicacion.direccion}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Botones de Acción -->
+          <div class="p-6 bg-gray-50 dark:bg-gray-800">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <a 
+                href={`https://www.google.com/maps/dir/?api=1&destination=${ubicacion.coordenadas.lat},${ubicacion.coordenadas.lng}`}
+                target="_blank"
+                rel="noopener"
+                class="flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-taro-500 to-taro-600 text-white rounded-xl hover:from-taro-600 hover:to-taro-700 transition-all duration-300 transform hover:scale-105 font-medium"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                </svg>
+                Cómo llegar
+              </a>
+              
+              <a 
+                href={`https://wa.me/${ubicacion.whatsapp}?text=¡Hola! ¿Podrían ayudarme con la ubicación exacta? 🗺️`}
+                target="_blank"
+                rel="noopener"
+                class="flex items-center justify-center gap-2 px-4 py-3 border-2 border-taro-500 dark:border-taro-400 text-taro-600 dark:text-taro-400 rounded-xl hover:bg-taro-50 dark:hover:bg-taro-900/20 transition-all duration-300 transform hover:scale-105 font-medium"
+              >
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.703"/>
+                </svg>
+                Preguntar ubicación
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,328 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Features from '../components/Features.astro';
+import MenuShowcase from '../components/MenuShowcase.astro';
+import LocationInfo from '../components/LocationInfo.astro';
+import Testimonials from '../components/Testimonials.astro';
+import SocialProof from '../components/SocialProof.astro';
+import FAQ from '../components/FAQ.astro';
+import Footer from '../components/Footer.astro';
+
+const pageTitle = "Wo Ai Tea - El Sabor Auténtico del Bubble Tea | Plaza Soho Las Cascadas";
+const pageDescription = "Descubre el verdadero sabor del bubble tea en El Salvador. Perlas de tapioca frescas, mochis artesanales y más de 15 sabores únicos. ¡Tu momento de felicidad te espera! 🧋";
+const pageKeywords = "bubble tea auténtico El Salvador, perlas tapioca frescas, mochis artesanales, té asiático premium, Plaza Soho Las Cascadas, mejor bubble tea";
+---
+
+<BaseLayout 
+  titulo={pageTitle} 
+  descripcion={pageDescription}
+  palabrasClave={pageKeywords}
+  imagen="/wo-ai-tea-hero-v2.jpg"
+>
+  <!-- Hero Alternativo - Enfoque en Autenticidad -->
+  <section id="hero" class="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-taro-50 via-mango-50 to-matcha-50 dark:from-gray-900 dark:via-gray-800 dark:to-taro-900/20">
+    
+    <!-- Elementos Decorativos Mejorados -->
+    <div class="absolute inset-0 overflow-hidden">
+      <!-- Burbujas Flotantes Animadas -->
+      <div class="absolute top-20 left-10 w-16 h-16 bg-taro-200/30 rounded-full animate-float" style="animation-delay: 0s;"></div>
+      <div class="absolute top-40 right-20 w-12 h-12 bg-mango-300/40 rounded-full animate-float" style="animation-delay: 1s;"></div>
+      <div class="absolute bottom-40 left-20 w-20 h-20 bg-matcha-200/30 rounded-full animate-float" style="animation-delay: 2s;"></div>
+      <div class="absolute bottom-60 right-40 w-8 h-8 bg-fresa-300/50 rounded-full animate-float" style="animation-delay: 0.5s;"></div>
+      
+      <!-- Patrón de Perlas de Tapioca -->
+      <div class="absolute bottom-0 left-0 right-0 h-32 opacity-10">
+        <div class="flex flex-wrap gap-2 p-4">
+          {Array.from({length: 50}).map((_, i) => (
+            <div key={i} class="w-3 h-3 bg-brown-800 rounded-full animate-bubble-rise" style={`animation-delay: ${i * 0.1}s;`}></div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        
+        <!-- Contenido Principal -->
+        <div class="text-center lg:text-left space-y-8 animate-fade-in">
+          
+          <!-- Badge Especial -->
+          <div class="inline-flex items-center gap-3 px-6 py-3 bg-gradient-to-r from-taro-100 to-mango-100 dark:from-taro-900/30 dark:to-mango-900/30 text-taro-700 dark:text-taro-300 rounded-full text-sm font-medium border-2 border-taro-200 dark:border-taro-700/50">
+            <span class="text-2xl animate-bounce-gentle">🧋</span>
+            <span class="font-cozy">Auténtico • Fresco • Artesanal</span>
+          </div>
+          
+          <!-- Título Principal Renovado -->
+          <div class="space-y-6">
+            <h1 class="text-6xl sm:text-7xl lg:text-8xl font-bold leading-tight">
+              <span class="block bg-gradient-to-r from-taro-600 via-mango-500 to-taro-700 bg-clip-text text-transparent font-accent">
+                Wo Ai
+              </span>
+              <span class="block bg-gradient-to-r from-matcha-500 via-brown-500 to-taro-600 bg-clip-text text-transparent font-accent">
+                Tea
+              </span>
+            </h1>
+            
+            <!-- Subtítulo Emocional -->
+            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-semibold text-gray-700 dark:text-gray-300 font-cozy">
+              Tu momento de 
+              <span class="text-gradient">felicidad</span> 
+              en cada sorbo
+            </h2>
+          </div>
+          
+          <!-- Descripción Mejorada -->
+          <p class="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            Desde las perlas de tapioca más frescas hasta los mochis artesanales. 
+            Cada bebida es una experiencia auténtica que conecta sabores, tradición y momentos especiales.
+          </p>
+          
+          <!-- Estadísticas Destacadas -->
+          <div class="grid grid-cols-3 gap-4 py-6">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-taro-600 dark:text-taro-400 font-cozy">15+</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">Sabores Únicos</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-mango-600 dark:text-mango-400 font-cozy">100%</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">Ingredientes Frescos</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-matcha-600 dark:text-matcha-400 font-cozy">24h</div>
+              <div class="text-sm text-gray-600 dark:text-gray-400">Máxima Frescura</div>
+            </div>
+          </div>
+          
+          <!-- CTAs Principales -->
+          <div class="flex flex-col sm:flex-row gap-4 pt-4">
+            <a href="#menu" class="btn-primary text-lg px-8 py-4 group">
+              <span class="mr-3">Explorar Sabores</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+              </svg>
+            </a>
+            
+            <a href="https://wa.me/50312345678?text=¡Hola! Quiero conocer más sobre Wo Ai Tea 🧋" 
+               target="_blank" rel="noopener"
+               class="btn-secondary text-lg px-8 py-4 group">
+              <svg class="w-5 h-5 mr-3 group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.703"/>
+              </svg>
+              <span>Contáctanos</span>
+            </a>
+          </div>
+          
+          <!-- Información de Ubicación -->
+          <div class="flex items-center justify-center lg:justify-start gap-4 pt-6 text-gray-600 dark:text-gray-400">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-taro-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-medium">Plaza Soho Las Cascadas</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span class="font-medium">Disponible en PedidosYA</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Imagen/Ilustración Mejorada -->
+        <div class="relative lg:scale-110 animate-scale-in" style="animation-delay: 0.3s;">
+          
+          <!-- Contenedor Principal -->
+          <div class="relative">
+            <!-- Fondo Decorativo -->
+            <div class="absolute inset-0 bg-gradient-to-br from-taro-200/30 to-mango-300/30 dark:from-taro-800/20 dark:to-mango-900/20 rounded-full transform rotate-6 scale-110 opacity-40"></div>
+            
+            <!-- Card Principal del Producto -->
+            <div class="relative z-10 card-bubble p-8 shadow-2xl max-w-md mx-auto">
+              
+              <!-- Bubble Tea Ilustrado Mejorado -->
+              <div class="aspect-square bg-gradient-to-br from-taro-100 to-mango-200 dark:from-taro-900/30 dark:to-mango-800/30 rounded-3xl flex items-end justify-center relative overflow-hidden mb-6">
+                
+                <!-- Vaso Principal -->
+                <div class="relative w-40 h-56 mb-4">
+                  <!-- Vaso transparente -->
+                  <div class="absolute bottom-0 w-full h-48 bg-gradient-to-b from-transparent via-taro-50/80 to-taro-100/90 rounded-b-3xl rounded-t-lg border-4 border-taro-200/40"></div>
+                  
+                  <!-- Líquido del té - Gradiente más realista -->
+                  <div class="absolute bottom-4 left-2 right-2 h-40 bg-gradient-to-b from-taro-400/70 via-mango-400/80 to-taro-500/90 rounded-b-2xl rounded-t-lg"></div>
+                  
+                  <!-- Perlas de Tapioca Mejoradas -->
+                  <div class="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex flex-wrap gap-1 w-28 justify-center">
+                    {Array.from({length: 12}).map((_, i) => (
+                      <div key={i} class="w-3 h-3 bg-gradient-to-br from-brown-700 to-brown-900 rounded-full opacity-80 animate-bubble-rise" style={`animation-delay: ${i * 0.2}s;`}></div>
+                    ))}
+                  </div>
+                  
+                  <!-- Tapa con pajita -->
+                  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-6 bg-gradient-to-r from-taro-300 to-mango-300 rounded-full border-2 border-taro-400/50"></div>
+                  
+                  <!-- Pajita -->
+                  <div class="absolute top-0 left-1/2 transform -translate-x-1/2 translate-x-2 w-1 h-16 bg-gradient-to-b from-fresa-400 to-fresa-500 rounded-full transform rotate-12"></div>
+                  
+                  <!-- Efectos de brillo -->
+                  <div class="absolute top-8 left-4 w-2 h-8 bg-white/40 rounded-full transform rotate-12"></div>
+                  <div class="absolute top-12 right-6 w-1 h-4 bg-white/30 rounded-full"></div>
+                </div>
+                
+                <!-- Elementos Flotantes Decorativos -->
+                <div class="absolute top-4 right-4 text-3xl animate-bounce-gentle" style="animation-delay: 0.5s;">🧋</div>
+                <div class="absolute bottom-8 left-4 text-2xl animate-bounce-gentle" style="animation-delay: 1s;">🥟</div>
+                <div class="absolute top-1/2 right-2 text-xl animate-bounce-gentle" style="animation-delay: 1.5s;">✨</div>
+                <div class="absolute top-6 left-6 text-lg animate-bounce-gentle" style="animation-delay: 2s;">🍃</div>
+              </div>
+              
+              <!-- Descripción del Producto -->
+              <div class="text-center space-y-3">
+                <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-200 font-cozy">Bubble Tea Premium</h3>
+                <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+                  Con perlas de tapioca auténticas, preparadas frescas cada día
+                </p>
+                
+                <!-- Características Destacadas -->
+                <div class="flex justify-center gap-4 pt-4">
+                  <span class="px-3 py-1 bg-taro-100 dark:bg-taro-900/30 text-taro-700 dark:text-taro-300 rounded-full text-xs font-medium">
+                    Fresco Diario
+                  </span>
+                  <span class="px-3 py-1 bg-mango-100 dark:bg-mango-900/30 text-mango-700 dark:text-mango-300 rounded-full text-xs font-medium">
+                    100% Natural
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Secciones Principales -->
+  <main id="main-content">
+    
+    <!-- Showcase del Menú -->
+    <MenuShowcase />
+    
+    <!-- Features Destacadas -->
+    <Features />
+    
+    <!-- Información de Ubicación -->
+    <LocationInfo />
+    
+    <!-- Testimonios -->
+    <Testimonials />
+    
+    <!-- FAQ Section -->
+    <FAQ />
+    
+    <!-- Social Proof -->
+    <SocialProof />
+    
+  </main>
+  
+  <Footer />
+</BaseLayout>
+
+<!-- Schema.org Mejorado -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Wo Ai Tea",
+  "description": "Bubble tea auténtico y mochis artesanales en El Salvador. Ingredientes premium y sabores únicos.",
+  "url": "https://woaitea.com",
+  "telephone": "+503-1234-5678",
+  "email": "hola@woaitea.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Plaza Soho Las Cascadas, Local 15",
+    "addressLocality": "Antiguo Cuscatlán",
+    "addressRegion": "La Libertad",
+    "addressCountry": "SV"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "13.6929",
+    "longitude": "-89.2182"
+  },
+  "servesCuisine": ["Asian Beverages", "Bubble Tea", "Taiwanese"],
+  "priceRange": "$$",
+  "openingHours": [
+    "Mo-Th 10:00-21:00",
+    "Fr-Sa 10:00-22:00", 
+    "Su 11:00-20:00"
+  ],
+  "paymentAccepted": ["Cash", "Credit Card", "Digital Wallet"],
+  "hasMenu": "https://woaitea.com/menu",
+  "acceptsReservations": false,
+  "takeaway": true,
+  "delivery": true,
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127"
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": {
+        "@type": "Person",
+        "name": "María González"
+      },
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "5"
+      },
+      "reviewBody": "El mejor bubble tea de El Salvador, auténtico sabor y ambiente increíble."
+    }
+  ]
+}
+</script>
+
+<style>
+  /* Estilos específicos para este index */
+  .animate-bounce-gentle {
+    animation: bounceGentle 3s ease-in-out infinite;
+  }
+  
+  @keyframes bounceGentle {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-5px) rotate(1deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(-1deg);
+    }
+    75% {
+      transform: translateY(-5px) rotate(0.5deg);
+    }
+  }
+  
+  /* Mejoras en las burbujas */
+  .animate-bubble-rise {
+    animation: bubbleRise 6s ease-in-out infinite;
+  }
+  
+  @keyframes bubbleRise {
+    0% {
+      transform: translateY(20px) scale(0.8);
+      opacity: 0;
+    }
+    20% {
+      opacity: 1;
+    }
+    80% {
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(-10px) scale(1.1);
+      opacity: 0;
+    }
+  }
+</style>

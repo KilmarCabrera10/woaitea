@@ -1,0 +1,198 @@
+---
+// Componente ContactForm - Captura de leads optimizada para conversión
+export interface Props {
+  titulo?: string;
+  subtitulo?: string;
+  botonTexto?: string;
+  mostrarTelefono?: boolean;
+  mostrarEmpresa?: boolean;
+}
+
+const {
+  titulo = "Obtén Tu Página Web Gratis Ahora",
+  subtitulo = "Completa el formulario y nos pondremos en contacto en menos de 24 horas",
+  botonTexto = "Quiero Mi Página Gratis",
+  mostrarTelefono = true,
+  mostrarEmpresa = true
+} = Astro.props;
+---
+
+<section id="formulario" class="py-20 gradient-primary transition-colors duration-300">
+  <div class="container-custom">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <!-- Columna de información -->
+      <div class="gradient-button px-8 py-12 text-center text-white rounded-2xl">
+        <h2 class="text-3xl sm:text-4xl font-bold mb-6">
+          ¡Tu Página Web Gratis te Espera!
+        </h2>
+        <p class="text-lg text-white/90 dark:text-white/90 mb-8">
+          Completa el formulario y en menos de 24 horas tendrás tu página web profesional lista para conquistar Internet.
+        </p>
+        
+        <!-- Lista de beneficios -->
+        <ul class="space-y-4 text-left max-w-md mx-auto mb-8">
+          {[
+            "Diseño Profesional y Responsive",
+            "Hosting Premium Incluido",
+            "Dominio Personalizado",
+            "Certificado SSL Gratis",
+            "Soporte Técnico",
+            "Sin Costos Ocultos"
+          ].map(benefit => (
+            <li class="flex items-center gap-3">
+              <svg class="w-5 h-5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+              <span>{benefit}</span>
+            </li>
+          ))}
+        </ul>
+        
+        <!-- Garantía -->
+        <div class="text-sm text-white/80 dark:text-white/80">
+          ✨ Sin compromiso • Cancela cuando quieras
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="bg-[var(--bg-primary)] p-8 rounded-2xl shadow-xl">
+        <form class="space-y-6" action="/submit" method="POST">
+          <!-- Nombre -->
+          <div>
+            <label for="nombre" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              Nombre Completo
+            </label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              required
+              class="w-full px-4 py-2 rounded-lg border border-[var(--color-primary-100)]/20 dark:border-[var(--color-primary-100)]/10 bg-[var(--bg-primary)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--color-primary-500)] focus:border-transparent outline-none transition-all"
+              placeholder="Tu nombre"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label for="email" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              class="w-full px-4 py-2 rounded-lg border border-[var(--color-primary-100)]/20 dark:border-[var(--color-primary-100)]/10 bg-[var(--bg-primary)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--color-primary-500)] focus:border-transparent outline-none transition-all"
+              placeholder="tu@email.com"
+            />
+          </div>
+
+          <!-- Teléfono -->
+          <div>
+            <label for="telefono" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              Teléfono (opcional)
+            </label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              class="w-full px-4 py-2 rounded-lg border border-[var(--color-primary-100)]/20 dark:border-[var(--color-primary-100)]/10 bg-[var(--bg-primary)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--color-primary-500)] focus:border-transparent outline-none transition-all"
+              placeholder="+34 600 000 000"
+            />
+          </div>
+
+          <!-- Tipo de Negocio -->
+          <div>
+            <label for="tipo_negocio" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              Tipo de Negocio
+            </label>
+            <select
+              id="tipo_negocio"
+              name="tipo_negocio"
+              required
+              class="w-full px-4 py-2 rounded-lg border border-[var(--color-primary-100)]/20 dark:border-[var(--color-primary-100)]/10 bg-[var(--bg-primary)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--color-primary-500)] focus:border-transparent outline-none transition-all"
+            >
+              <option value="">Selecciona una opción</option>
+              <option value="tienda">Tienda Online</option>
+              <option value="servicios">Servicios Profesionales</option>
+              <option value="restaurante">Restaurante/Café</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <!-- Mensaje -->
+          <div>
+            <label for="mensaje" class="block text-sm font-medium text-[var(--text-primary)] mb-2">
+              Mensaje (opcional)
+            </label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="4"
+              class="w-full px-4 py-2 rounded-lg border border-[var(--color-primary-100)]/20 dark:border-[var(--color-primary-100)]/10 bg-[var(--bg-primary)] text-[var(--text-primary)] focus:ring-2 focus:ring-[var(--color-primary-500)] focus:border-transparent outline-none transition-all resize-none"
+              placeholder="Cuéntanos más sobre tu proyecto..."
+            ></textarea>
+          </div>
+
+          <!-- Términos y Condiciones -->
+          <div class="flex items-start">
+            <div class="flex items-center h-5">
+              <input
+                id="terminos"
+                name="terminos"
+                type="checkbox"
+                required
+                class="mt-1 w-4 h-4 text-[var(--color-primary-600)] dark:text-[var(--color-primary-500)] border-[var(--color-primary-100)]/20 dark:border-[var(--color-primary-100)]/10 rounded focus:ring-[var(--color-primary-500)] dark:focus:ring-[var(--color-primary-400)] dark:bg-[var(--bg-secondary)]"
+              />
+            </div>
+            <div class="ml-3">
+              <label for="terminos" class="text-sm text-[var(--text-secondary)]">
+                Acepto los <a href="/terminos" class="text-[var(--color-primary-600)] dark:text-[var(--color-primary-500)] hover:underline">términos y condiciones</a> y la <a href="/privacidad" class="text-[var(--color-primary-600)] dark:text-[var(--color-primary-500)] hover:underline">política de privacidad</a>
+              </label>
+            </div>
+          </div>
+
+          <!-- Botón de envío -->
+          <button
+            type="submit"
+            class="w-full py-4 px-6 gradient-button text-white font-semibold rounded-lg hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--color-primary-500)] dark:focus:ring-offset-gray-800 transition-all duration-200 transform hover:scale-[1.02]"
+          >
+            Solicitar Mi Página Web Gratis
+          </button>
+        </form>
+
+        <!-- Texto de seguridad -->
+        <p class="mt-4 text-center text-sm text-[var(--text-secondary)]">
+          🔒 Tus datos están seguros y nunca serán compartidos
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Manejo básico del formulario
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const mensajeExito = document.getElementById('mensaje-exito');
+  
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Aquí puedes agregar la lógica para enviar el formulario
+    // Por ahora, solo mostramos el mensaje de éxito
+    
+    // Simular envío
+    const boton = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+    boton.textContent = 'Enviando...';
+    boton.disabled = true;
+    
+    // Simular delay de envío
+    setTimeout(() => {
+      form.style.display = 'none';
+      mensajeExito?.classList.remove('hidden');
+      
+      // Scroll suave al mensaje
+      mensajeExito?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 1500);
+  });
+</script>
